@@ -41,9 +41,9 @@ jobs:
       - name: Build and push Docker image
         run: |
           docker build -t ahmedgithub .
-          echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-          docker tag ahmedgithub ${{ secrets.DOCKERHUB_USERNAME }}/ahmedgithub
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ahmedgithub
+          echo ${DOCKERHUB_TOKEN} | docker login -u ${DOCKERHUB_USERNAME} --password-stdin
+          docker tag ahmedgithub ${DOCKERHUB_USERNAME}/ahmedgithub
+          docker push ${DOCKERHUB_USERNAME}/ahmedgithub
         env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          DOCKERHUB_USERNAME: ${DOCKERHUB_USERNAME}
+          DOCKERHUB_TOKEN: ${DOCKERHUB_TOKEN}
